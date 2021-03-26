@@ -16,6 +16,7 @@ function myFunction() {
 myFunction();
 
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀:
+// because the nestedFunction is nested Within the block scope of myFunction, it is still allowed to have access to the variable internal.
 
 /* 🚀🚀🚀 Task 2: Counter 🚀🚀🚀 */
 /* Use summation to do the following:
@@ -24,8 +25,17 @@ myFunction();
     
 For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
 
-function summation(/*Your Code Here*/) {
-	/*Your Code Here*/
+function summation(num) {
+	let counter = 0;
+	while (num > 0) {
+		counter += num;
+		num -= 1;
+	}
+	return counter;
+
+	// this is better
+	// if (num <= 0) return 0;
+	// return num + summation(num - 1);
 }
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
@@ -55,8 +65,12 @@ const zooAnimals = [
   displayNames will be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
   */
 
-function animalNames(/*Your Code Here*/) {
-	/*Your Code Here*/
+function animalNames(animalData) {
+	const displayNames = [];
+	animalData.forEach(animal =>
+		displayNames.push(`name: ${animal.animal_name}, scientific: ${animal.scientific_name}`)
+	);
+	return displayNames;
 }
 
 /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
@@ -65,8 +79,8 @@ function animalNames(/*Your Code Here*/) {
   For example: ['jackal, asiatic', .....]
   */
 
-function lowerCaseNames(/*Your Code Here*/) {
-	/*Your Code Here*/
+function lowerCaseNames(animalData) {
+	return animalData.map(animal => `${animal.animal_name.toLowerCase()}`);
 }
 
 /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
@@ -74,8 +88,8 @@ function lowerCaseNames(/*Your Code Here*/) {
   Using lowPopulationAnimals use .filter() to create a new array of objects which contains only the animals with a population of less than 5.
   */
 
-function lowPopulationAnimals(/*Your Code Here*/) {
-	/*Your Code Here*/
+function lowPopulationAnimals(animalData) {
+	return animalData.filter(animal => animal.population < 5);
 }
 
 /* 🦁🦁🦁 Request 4: .reduce() 🦁🦁🦁
@@ -84,8 +98,8 @@ function lowPopulationAnimals(/*Your Code Here*/) {
   Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count.
   */
 
-function USApop(/*Your Code Here*/) {
-	/*Your Code Here*/
+function USApop(animalData) {
+	return animalData.reduce((acc, animal) => acc + animal.population, 0);
 }
 
 // 🦁🦁🦁 Callbacks 🦁🦁🦁
@@ -96,27 +110,27 @@ function USApop(/*Your Code Here*/) {
  * The consume function should return the invocation of cb, passing a and b into cb as arguments
  */
 
-function consume(/*Your Code Here */) {
-	/*Your Code Here */
+function consume(a, b, cb) {
+	return cb(a, b);
 }
 
 /* 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁 */
 // 🦁🦁🦁 Use add to return the sum of two numbers 🦁🦁🦁
 
-function add(/*Your Code Here */) {
-	/*Your Code Here*/
+function add(num1, num2) {
+	return num1 + num2;
 }
 
 // 🦁🦁🦁 Use multiply to return the product of two numbers 🦁🦁🦁
 
-function multiply(/*Your Code Here */) {
-	/*Your Code Here */
+function multiply(num1, num2) {
+	return num1 * num2;
 }
 
 // 🦁🦁🦁 Use greeting to accept a first and last name and return "Hello {first-name} {last-name}, nice to meet you!" 🦁🦁🦁
 
-function greeting(/*Your Code Here */) {
-	return; /*Your Code Here */
+function greeting(firstName, lastName) {
+	return `Hello ${firstName} ${lastName}, nice to meet you!`;
 }
 
 // 🦁🦁🦁 Step 3: Check your work by un-commenting the following calls to consume(): 🦁🦁🦁
